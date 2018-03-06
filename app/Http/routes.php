@@ -11,4 +11,16 @@
 |
 */
 
-Route::get('/', 'ItemController@read');
+Route::get('/items',   'ItemController@read');   //read
+
+
+Route::get('/items/create', 'ItemController@add');     //form
+Route::post('/items/create', 'ItemController@create'); //create
+
+
+Route::get('/items/update', 'ItemController@edit');    //form
+Route::post('/items/update', 'ItemController@update'); //save
+
+Route::get('/items/delete', 'ItemController@delete');
+
+
