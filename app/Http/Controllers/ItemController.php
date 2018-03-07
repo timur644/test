@@ -11,6 +11,8 @@ class ItemController extends Controller
     //see  all item's
     public function read()
     {
+        // phpinfo();
+        // exit;
         $items = Item::all();
         return view('items', ['items'=>$items]);
     }
@@ -46,20 +48,11 @@ class ItemController extends Controller
         return redirect('/items');
     }
 
-     /*
-     drop table items;
-    go
-
-    create table items(id int identity, name nvarchar(255));
-    go
-
-    insert into items(name) values('bread');
-    insert into items(name) values('water');
-    insert into items(name) values('sugar');
-    go
-
-    select * from items;
-    go
-     */
-    
+    //delete-item
+    public function delete (Request $request)
+    {
+        $items = Item::where('id', $request->id)->get();
+        $items[0]->delete();
+        return redirect('/items');
+    }
 }
